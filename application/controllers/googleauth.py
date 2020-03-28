@@ -1,7 +1,18 @@
-from flask import session, render_template, request, redirect, Blueprint
-import requests
+# built-in Python Modules
+import json
+import os
 
+# external Python Modules
+from flask import session, render_template, request, redirect, Blueprint
+from oauthlib.oauth2 import WebApplicationClient
+import requests
+from dotenv import load_dotenv
+load_dotenv()
+# Blueprint
 google = Blueprint('google', __name__, static_folder='static')
+
+# OAuth 2 client setup
+auth = WebApplicationClient(os.getenv('GOOGLE_CLIENT_ID'))
 
 GOOGLE_DISCOVERY_URL = (
     "https://accounts.google.com/.well-known/openid-configuration"
@@ -13,7 +24,7 @@ def get_google_provider_cfg():
 
 
 @google.route("/google")
-def auth():
+def google_auth():
     # find out what URL to hit for Google login
     google_provider_cfg = get_google_provider_cfg()
     authorization_endpoint = google_provider_cfg["authorization_endpoint"]
@@ -45,7 +56,8 @@ def callback():
         token_url,
         headers=headers,
         data=body,
-        auth=(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET),
+        auth=(os.getenv('GOOGLE_CLIENT_ID'),
+              os.getenv('GOOGLE_CLIENT_SECRET')),
     )
 
     # Parse the fucking tokens!
@@ -62,5 +74,6 @@ def callback():
         users_email = userinfo_response.json()["email"]
         picture = userinfo_response.json()["picture"]
         users_name = userinfo_response.json()["given_name"]
+        return users_email
     else:
         return "User email not available or not verified by Google.", 400

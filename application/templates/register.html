@@ -1,24 +1,8 @@
 <!doctype html>
 <html lang="en">
 
-
-<!-- Mirrored from pipeline.mediumra.re/utility-create-account.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2020 07:31:17 GMT -->
-<!-- Added by HTTrack -->
-<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
-
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-52115242-14"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-52115242-14');
-  </script>
   <meta charset="utf-8">
   <title>Pipeline Project Management Bootstrap Theme</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,9 +21,10 @@
           <div class="text-center">
             <h1 class="h2">Create account</h1>
             <p class="lead">Start doing things for free, in an instant</p>
-            <button class="btn btn-lg btn-block btn-primary">
-              <img alt="Google" src="static/img/logo-google.svg" class="rounded align-top mr-2" />Continue with Google
-            </button>
+            <a href="{{url_for('google.google_auth')}}"><button class="btn btn-lg btn-block btn-primary">
+                <img alt="Google" src="static/img/logo-google.svg" class="rounded align-top mr-2" />Continue with Google
+              </button></a>
+
             <hr>
             <form>
               <div class="form-group">
@@ -196,6 +181,5 @@
 </body>
 
 
-<!-- Mirrored from pipeline.mediumra.re/utility-create-account.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2020 07:31:18 GMT -->
 
 </html>

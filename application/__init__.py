@@ -23,6 +23,7 @@ app.register_blueprint(login)  # login route
 app.register_blueprint(forgotpassword)  # forgot password
 app.register_blueprint(home)  # home route
 app.register_blueprint(google)  # google route
+
 # error handlers
 @app.errorhandler(404)
 def page_not_found(e):
