@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from application.controllers.register import signup
 from application.controllers.signin import login
 from application.controllers.forgot import forgotpassword
+from application.controllers.home import home
 # application
 app = Flask("helpq", template_folder='application/templates',
             static_folder='application/static')
@@ -16,6 +17,8 @@ app.config.from_object(os.getenv('APP_SETTINGS'))
 app.register_blueprint(signup)  # register route
 app.register_blueprint(login)  # login route
 app.register_blueprint(forgotpassword)  # forgot password
+app.register_blueprint(home)  # home route
+
 
 # error handlers
 @app.errorhandler(404)
