@@ -17,7 +17,7 @@ class Config(object):
 class ProductionConfig(Config):
     DEVELOPMENT = False
     DEBUG = False
-    SERVER_NAME = '0.0.0.0:8000'
+    SERVER_NAME = 'makehelpqueue.herokuapp.com'
     FLASK_ENV = 'production'
 
 
