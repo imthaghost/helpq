@@ -1,4 +1,5 @@
 from flask import session, render_template, request, redirect, Blueprint
+import requests
 
 google = Blueprint('google', __name__, static_folder='static')
 
