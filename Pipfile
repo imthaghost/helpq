@@ -11,6 +11,7 @@ flask = "*"
 python-dotenv = "*"
 oauthlib = "*"
 pyopenssl = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"
