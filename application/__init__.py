@@ -13,8 +13,8 @@ from application.controllers.googleauth import google
 # load enviornment variables
 load_dotenv()
 # application
-app = Flask("helpq", template_folder='application/templates',
-            static_folder='application/static')
+app = Flask("helpq", template_folder='templates',
+            static_folder='static')
 # application configuration from .env file
 app.config.from_object(os.getenv('APP_SETTINGS'))
 # register routes
