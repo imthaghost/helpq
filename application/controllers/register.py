@@ -1,6 +1,6 @@
 from flask import session, render_template, request, redirect, Blueprint
 
-signup = Blueprint('register', __name__, static_folder='static')
+signup = Blueprint('register', __name__)
 
 
 @signup.route('/register', methods=['GET', 'POST'])
