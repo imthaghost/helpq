@@ -8,6 +8,10 @@ from application.controllers.register import signup
 from application.controllers.signin import login
 from application.controllers.forgot import forgotpassword
 from application.controllers.home import home
+from application.controllers.googleauth import google
+
+# load enviornment variables
+load_dotenv()
 # application
 app = Flask("helpq", template_folder='application/templates',
             static_folder='application/static')
@@ -18,8 +22,7 @@ app.register_blueprint(signup)  # register route
 app.register_blueprint(login)  # login route
 app.register_blueprint(forgotpassword)  # forgot password
 app.register_blueprint(home)  # home route
-
-
+app.register_blueprint(google)  # google route
 # error handlers
 @app.errorhandler(404)
 def page_not_found(e):
