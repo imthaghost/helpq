@@ -1,10 +1,9 @@
 from flask import session, render_template, request, redirect, Blueprint, url_for
 
-home = Blueprint('index', __name__, static_folder='static')
+q = Blueprint('q', __name__, static_folder='static')
 
 
-@home.route('/', methods=['GET'])
-@home.route('/index', methods=['GET'])
+@q.route('/dashboard', methods=['GET'])
 def root():
     if request.method == 'GET':
         if 'user' in session:

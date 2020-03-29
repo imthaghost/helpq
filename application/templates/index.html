@@ -2,9 +2,7 @@
 <html lang="en">
 
 
-<!-- Mirrored from pipeline.mediumra.re/nav-top-project.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2020 07:29:01 GMT -->
-<!-- Added by HTTrack -->
-<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
 
 <head>
 
@@ -38,7 +36,7 @@
             <div class="dropdown-menu dropdown-menu-right">
               <a href="nav-side-user.html" class="dropdown-item">Profile</a>
               <a href="utility-account-settings.html" class="dropdown-item">Account Settings</a>
-              <a href="#" class="dropdown-item">Log Out</a>
+              <a href="{{url_for('logout.root')}}" class="dropdown-item">Log Out</a>
             </div>
           </div>
         </div>
@@ -100,7 +98,7 @@
 
         </ul>
         <div class="d-lg-flex align-items-center">
-          <form class="form-inline my-lg-0 my-2">
+          <!-- <form class="form-inline my-lg-0 my-2">
             <div class="input-group input-group-dark input-group-round">
               <div class="input-group-prepend">
                 <span class="input-group-text">
@@ -109,11 +107,11 @@
               </div>
               <input type="search" class="form-control form-control-dark" placeholder="Search" aria-label="Search app">
             </div>
-          </form>
+          </form> -->
           <div class="dropdown mx-lg-2">
-            <button class="btn btn-primary btn-block dropdown-toggle" type="button" id="newContentButton"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Add New
+            <button data-toggle="modal" data-target="#task-add-modal" class="btn btn-primary btn-block" type="button"
+              id="newContentButton" aria-haspopup="true" aria-expanded="false">
+              Create
             </button>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="#">Team</a>
@@ -127,9 +125,9 @@
                 <img alt="Image" src="static/img/avatar-male-4.jpg" class="avatar" />
               </a>
               <div class="dropdown-menu dropdown-menu-right">
-                <a href="nav-side-user.html" class="dropdown-item">Profile</a>
-                <a href="utility-account-settings.html" class="dropdown-item">Account Settings</a>
-                <a href="#" class="dropdown-item">Log Out</a>
+                <a href="#" class="dropdown-item">Profile</a>
+                <a href="{{url_for('settings.root')}}" class="dropdown-item">Account Settings</a>
+                <a href="{{url_for('logout.root')}}" class="dropdown-item">Log Out</a>
               </div>
             </div>
           </div>
@@ -138,7 +136,7 @@
     </div>
     <div class="main-container">
 
-      <div class="breadcrumb-bar navbar bg-white sticky-top">
+      <!-- <div class="breadcrumb-bar navbar bg-white sticky-top">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Overview</a>
@@ -164,7 +162,7 @@
           </div>
         </div>
 
-      </div>
+      </div> -->
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-xl-10 col-lg-11">
@@ -245,10 +243,10 @@
                 <a class="nav-link active" data-toggle="tab" href="#tasks" role="tab" aria-controls="tasks"
                   aria-selected="true">Tasks</a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#files" role="tab" aria-controls="files"
                   aria-selected="false">Files</a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#activity" role="tab" aria-controls="activity"
                   aria-selected="false">Activity</a>
@@ -256,7 +254,7 @@
             </ul>
             <div class="tab-content">
               <div class="tab-pane fade show active" id="tasks" role="tabpanel" data-filter-list="card-list-body">
-                <div class="row content-list-head">
+                <!-- <div class="row content-list-head">
                   <div class="col-auto">
                     <h3>Help🤓</h3>
                     <button class="btn btn-round" data-toggle="modal" data-target="#task-add-modal">
@@ -274,12 +272,12 @@
                         aria-label="Filter Tasks">
                     </div>
                   </form>
-                </div>
+                </div> -->
                 <!--end of content list head-->
                 <div class="content-list-body">
                   <div class="card-list">
                     <div class="card-list-head">
-                      <h6>Backend</h6>
+                      <h6>Backend Web</h6>
                       <div class="dropdown">
                         <button class="btn-options" type="button" id="cardlist-dropdown-button-1" data-toggle="dropdown"
                           aria-haspopup="true" aria-expanded="false">
@@ -300,7 +298,7 @@
                         </div>
                         <div class="card-body">
                           <div class="card-title">
-                            <a href="#">
+                            <a href="{{url_for('message.root')}}">
                               <h6 data-filter-by="text">Mongodb Error</h6>
                             </a>
                             <span class="text-small">Today</span>
@@ -346,10 +344,10 @@
                               </li>
 
                             </ul>
-                            <div class="d-flex align-items-center">
+                            <!-- <div class="d-flex align-items-center">
                               <i class="material-icons">playlist_add_check</i>
                               <span>3/4</span>
-                            </div>
+                            </div> -->
                             <div class="dropdown card-options">
                               <button class="btn-options" type="button" id="task-dropdown-button-1"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -372,7 +370,7 @@
                         </div>
                         <div class="card-body">
                           <div class="card-title">
-                            <a href="#">
+                            <a href="{{url_for('message.root')}}">
                               <h6 data-filter-by="text">Jinja Template Error</h6>
                             </a>
                             <span class="text-small">5 days</span>
@@ -469,7 +467,7 @@
                   </div>
                   <div class="card-list">
                     <div class="card-list-head">
-                      <h6>Ideation</h6>
+                      <h6>Frontend Web</h6>
                       <div class="dropdown">
                         <button class="btn-options" type="button" id="cardlist-dropdown-button-2" data-toggle="dropdown"
                           aria-haspopup="true" aria-expanded="false">
@@ -647,7 +645,7 @@
                   </div>
                   <div class="card-list">
                     <div class="card-list-head">
-                      <h6>Design</h6>
+                      <h6>Data Science</h6>
                       <div class="dropdown">
                         <button class="btn-options" type="button" id="cardlist-dropdown-button-3" data-toggle="dropdown"
                           aria-haspopup="true" aria-expanded="false">
@@ -718,11 +716,84 @@
                     </div>
                   </div>
                   <!--end of content list body-->
+                  <div class="card-list">
+                    <div class="card-list-head">
+                      <h6>Mobile</h6>
+                      <div class="dropdown">
+                        <button class="btn-options" type="button" id="cardlist-dropdown-button-3" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">
+                          <i class="material-icons">more_vert</i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                          <a class="dropdown-item" href="#">Rename</a>
+                          <a class="dropdown-item text-danger" href="#">Archive</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-list-body">
+
+                      <div class="card card-task">
+                        <div class="progress">
+                          <div class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="card-body">
+                          <div class="card-title">
+                            <a href="#">
+                              <h6 data-filter-by="text">Produce realised brand package</h6>
+                            </a>
+                            <span class="text-small">Unscheduled</span>
+                          </div>
+                          <div class="card-meta">
+                            <ul class="avatars">
+
+                              <li>
+                                <a href="#" data-toggle="tooltip" title="Marcus">
+                                  <img alt="Marcus Simmons" class="avatar" src="static/img/avatar-male-1.jpg" />
+                                </a>
+                              </li>
+
+                              <li>
+                                <a href="#" data-toggle="tooltip" title="Harry">
+                                  <img alt="Harry Xai" class="avatar" src="static/img/avatar-male-2.jpg" />
+                                </a>
+                              </li>
+
+                              <li>
+                                <a href="#" data-toggle="tooltip" title="Kristina">
+                                  <img alt="Kristina Van Der Stroem" class="avatar"
+                                    src="static/img/avatar-female-4.jpg" />
+                                </a>
+                              </li>
+
+                            </ul>
+                            <div class="d-flex align-items-center">
+                              <i class="material-icons">playlist_add_check</i>
+                              <span>-/-</span>
+                            </div>
+                            <div class="dropdown card-options">
+                              <button class="btn-options" type="button" id="task-dropdown-button-7"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="material-icons">more_vert</i>
+                              </button>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#">Mark as done</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-danger" href="#">Archive</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
                 </div>
                 <!--end of content list-->
               </div>
               <!--end of tab-->
-              <div class="tab-pane fade" id="files" role="tabpanel" data-filter-list="dropzone-previews">
+              <!-- <div class="tab-pane fade" id="files" role="tabpanel" data-filter-list="dropzone-previews">
                 <div class="content-list">
                   <div class="row content-list-head">
                     <div class="col-auto">
@@ -740,7 +811,6 @@
                       </div>
                     </form>
                   </div>
-                  <!--end of content list head-->
                   <div class="content-list-body row">
                     <div class="col">
                       <ul class="d-none dz-template">
@@ -973,8 +1043,8 @@
                     </div>
                   </div>
                 </div>
-                <!--end of content list-->
-              </div>
+                
+              # </div> -->
               <div class="tab-pane fade" id="activity" role="tabpanel" data-filter-list="list-group-activity">
                 <div class="content-list">
                   <div class="row content-list-head">
@@ -1825,11 +1895,11 @@
           </div>
         </div>
       </div>
-      <button class="btn btn-primary btn-round btn-floating btn-lg" type="button" data-toggle="collapse"
+      <!-- <button class="btn btn-primary btn-round btn-floating btn-lg" type="button" data-toggle="collapse"
         data-target="#floating-chat" aria-expanded="false">
         <i class="material-icons">chat_bubble</i>
         <i class="material-icons">close</i>
-      </button>
+      </button> -->
       <div class="collapse sidebar-floating" id="floating-chat">
         <div class="sidebar-content">
           <div class="chat-module" data-filter-list="chat-module-body">

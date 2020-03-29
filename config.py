@@ -12,6 +12,7 @@ class Config(object):
     TESTING = False  # testing mode
     CSRF_ENABLED = True  # CSRF prevention
     SECRET_KEY = os.getenv('secret_key')  # server secret
+    MONGODB_URI = os.getenv('DATABASE_URL')
 
 
 class ProductionConfig(Config):

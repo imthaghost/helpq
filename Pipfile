@@ -13,6 +13,11 @@ oauthlib = "*"
 pyopenssl = "*"
 gunicorn = "*"
 requests = "*"
+pymongo = "*"
+bcrypt = "*"
+uuid = "*"
+flask-socketio = "*"
+eventlet = "*"
 
 [requires]
 python_version = "3.7"

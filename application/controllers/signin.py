@@ -1,9 +1,30 @@
-from flask import session, render_template, request, redirect, Blueprint
+from flask import session, render_template, request, redirect, Blueprint, url_for
+import bcrypt
+import application
 
-login = Blueprint('login', __name__, static_folder='static')
+login = Blueprint('login', __name__)
 
 
 @login.route('/login', methods=['GET', 'POST'])
 def root():
     if request.method == 'GET':
-        return render_template('login.html')
+        if 'user' in session:
+            return redirect(url_for('q.root'))
+        else:
+            return render_template('login.html')
+    if request.method == 'POST':
+        if 'user' in session:
+            return redirect(url_for('q.root'))
+        else:
+            credentials = request.form
+            email = credentials.get('email')
+            password = credentials.get('password')
+            # todo: make sure to sanitize unless you want SQL Injection :)
+            verify_user = application.user.find_one({'email': email})
+            # if the users email is foud in the database and check to see if the password credential matches the encrypted field in the database
+            if verify_user is not None:
+                if bcrypt.hashpw(password.encode('utf-8'), verify_user['password']) == verify_user['password']:
+                    session['user'] = email
+                    return redirect(url_for('q.root'))
+            else:
+                return 'failed'
