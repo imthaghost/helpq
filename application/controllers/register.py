@@ -15,11 +15,17 @@ def root():
         else:
             return render_template('register.html')
     if request.method == 'POST':
-        email = request.form.get('email')
-        pw = request.form.get('password')
-        new_user = User(email=email, password=pw)
-        # generate UUID
-        new_user.set_uuid()
-        new_user.save_new()
-        session['user'] = email
-        return redirect(url_for('q.root'))
+        credentials = request.form
+        email = credentials.get('email')
+        pw = credentials.get('password')
+        # if we find a user in the database return that user exists and redirect the client to the register form with an error message
+        if application.user.find_one({"email": email}):
+            # change to login later
+            return redirect(url_for('register.root'))
+        else:
+            new_user = User(email=email, password=pw)
+            # generate UUID
+            new_user.set_uuid()
+            new_user.save_new()
+            session['user'] = email
+            return redirect(url_for('q.root'))

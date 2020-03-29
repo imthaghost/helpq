@@ -19,6 +19,7 @@ def root():
             credentials = request.form
             email = credentials.get('email')
             password = credentials.get('password')
+            # if we find a user in the database return that user exists and redirect the client to the register form with an error message
             # todo: make sure to sanitize unless you want SQL Injection :)
             verify_user = application.user.find_one({'email': email})
             # if the users email is foud in the database and check to see if the password credential matches the encrypted field in the database
@@ -27,4 +28,4 @@ def root():
                     session['user'] = email
                     return redirect(url_for('q.root'))
             else:
-                return 'failed'
+                return redirect(url_for('login.root'))
