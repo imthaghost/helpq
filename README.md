@@ -7,7 +7,7 @@
 Help queue is a real time web application that allows students to get help!
 </p>
 <br>
-<p align="center"><a href="#">Official Website</a></p>
+<p align="center"><a href="https://makehelpqueue.herokuapp.com/">Official Website</a></p>
 <br>
 <!-- <p align="center">
    <a href="https://goreportcard.com/report/github.com/imthaghost/goclone"><img src="https://goreportcard.com/badge/github.com/imthaghost/goclone"></a>
