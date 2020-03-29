@@ -10,4 +10,4 @@ def root():
         if 'user' in session:
             return render_template('index.html')
         else:
-            return redirect(url_for('register.root'))
+            return redirect(url_for('login.root'))
