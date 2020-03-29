@@ -3,6 +3,7 @@ from flask import session, render_template, request, redirect, Blueprint, url_fo
 
 # local Python Modules
 from application.models.user import User
+import application
 
 signup = Blueprint('register', __name__)
 
