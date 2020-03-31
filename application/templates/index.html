@@ -299,7 +299,7 @@
                         <div class="card-body">
                           <div class="card-title">
                             <a href="{{url_for('message.root')}}">
-                              <h6 data-filter-by="text">Mongodb Error</h6>
+                              <h6 id="messages" data-filter-by="text">Mongodb Error</h6>
                             </a>
                             <span class="text-small">Today</span>
                           </div>
@@ -1884,7 +1884,7 @@
                   </div>
                   <!--end of modal body-->
                   <div class="modal-footer">
-                    <button role="button" class="btn btn-primary" type="submit">
+                    <button role="button" id="create-task" class="btn btn-primary" onclick="wtf()">
                       Create Task
                     </button>
                   </div>
@@ -1895,11 +1895,11 @@
           </div>
         </div>
       </div>
-      <!-- <button class="btn btn-primary btn-round btn-floating btn-lg" type="button" data-toggle="collapse"
-        data-target="#floating-chat" aria-expanded="false">
-        <i class="material-icons">chat_bubble</i>
-        <i class="material-icons">close</i>
-      </button> -->
+      <!-- <button class=" btn btn-primary btn-round btn-floating btn-lg" type="button" data-toggle="collapse"
+                      data-target="#floating-chat" aria-expanded="false">
+                      <i class="material-icons">chat_bubble</i>
+                      <i class="material-icons">close</i>
+                    </button> -->
       <div class="collapse sidebar-floating" id="floating-chat">
         <div class="sidebar-content">
           <div class="chat-module" data-filter-list="chat-module-body">
@@ -1925,7 +1925,8 @@
                       <span data-filter-by="text">4 days ago</span>
                     </div>
                     <div class="chat-item-body" data-filter-by="text">
-                      <p>Hey guys, just kicking things off here in the chat window. Hope you&#39;re all ready to tackle
+                      <p>Hey guys, just kicking things off here in the chat window. Hope you&#39;re all
+                        ready to tackle
                         this great project. Let&#39;s smash some Brand Concept &amp; Design!</p>
 
                     </div>
@@ -1941,7 +1942,8 @@
                       <span data-filter-by="text">4 days ago</span>
                     </div>
                     <div class="chat-item-body" data-filter-by="text">
-                      <p>Nice one <a href="#">@Claire</a>, we&#39;ve got some killer ideas kicking about already.
+                      <p>Nice one <a href="#">@Claire</a>, we&#39;ve got some killer ideas kicking about
+                        already.
                         <img src="https://media.giphy.com/media/aTeHNLRLrwwwM/giphy.gif" alt="alt text"
                           title="Thinking">
                       </p>
@@ -1959,7 +1961,8 @@
                       <span data-filter-by="text">3 days ago</span>
                     </div>
                     <div class="chat-item-body" data-filter-by="text">
-                      <p>Roger that boss! <a href="#">@Ravi</a> and I have already started gathering some stuff for the
+                      <p>Roger that boss! <a href="#">@Ravi</a> and I have already started gathering some
+                        stuff for the
                         mood boards, excited to start! &#x1f525;</p>
 
                     </div>
@@ -2006,7 +2009,8 @@
                       <span data-filter-by="text">Yesterday</span>
                     </div>
                     <div class="chat-item-body" data-filter-by="text">
-                      <p>Coming along nicely, we&#39;ve got a draft for the client questionnaire completed, take a look!
+                      <p>Coming along nicely, we&#39;ve got a draft for the client questionnaire
+                        completed, take a look!
                         &#x1f913;</p>
 
                     </div>
@@ -2032,7 +2036,8 @@
                       <span data-filter-by="text">2 hours ago</span>
                     </div>
                     <div class="chat-item-body" data-filter-by="text">
-                      <p>Great start guys, I&#39;ve added some notes to the task. We may need to make some adjustments
+                      <p>Great start guys, I&#39;ve added some notes to the task. We may need to make some
+                        adjustments
                         to the last couple of items - but no biggie!</p>
 
                     </div>
@@ -2048,7 +2053,8 @@
                       <span data-filter-by="text">Just now</span>
                     </div>
                     <div class="chat-item-body" data-filter-by="text">
-                      <p>Well done <a href="#">@all</a>. See you all at 2 for the kick-off meeting. &#x1f91C;</p>
+                      <p>Well done <a href="#">@all</a>. See you all at 2 for the kick-off meeting.
+                        &#x1f91C;</p>
 
                     </div>
 
@@ -2081,6 +2087,7 @@
   </div>
 
   <!-- Required vendor scripts (Do not remove) -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
   <script type="text/javascript" src="static/js/jquery.min.js"></script>
   <script type="text/javascript" src="static/js/popper.min.js"></script>
   <script type="text/javascript" src="static/js/bootstrap.js"></script>
@@ -2103,127 +2110,9 @@
 
   <!-- Required theme scripts (Do not remove) -->
   <script type="text/javascript" src="static/js/theme.js"></script>
+  <script type="text/javascript" src="static/js/socks.js"></script>
 
-  <!-- This appears in the demo only - demonstrates different layouts -->
-  <style type="text/css">
-    .layout-switcher {
-      position: fixed;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%) translateY(73px);
-      color: #fff;
-      transition: all .35s ease;
-      background: #343a40;
-      border-radius: .25rem .25rem 0 0;
-      padding: .75rem;
-      z-index: 999;
-    }
 
-    .layout-switcher:not(:hover) {
-      opacity: .95;
-    }
-
-    .layout-switcher:not(:focus) {
-      cursor: pointer;
-    }
-
-    .layout-switcher-head {
-      font-size: .75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-
-    .layout-switcher-head i {
-      font-size: 1.25rem;
-      transition: all .35s ease;
-    }
-
-    .layout-switcher-body {
-      transition: all .55s ease;
-      opacity: 0;
-      padding-top: .75rem;
-      transform: translateY(24px);
-      text-align: center;
-    }
-
-    .layout-switcher:focus {
-      opacity: 1;
-      outline: none;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .layout-switcher:focus .layout-switcher-head i {
-      transform: rotateZ(180deg);
-      opacity: 0;
-    }
-
-    .layout-switcher:focus .layout-switcher-body {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .layout-switcher-option {
-      width: 72px;
-      padding: .25rem;
-      border: 2px solid rgba(255, 255, 255, 0);
-      display: inline-block;
-      border-radius: 4px;
-      transition: all .35s ease;
-    }
-
-    .layout-switcher-option.active {
-      border-color: #007bff;
-    }
-
-    .layout-switcher-icon {
-      width: 100%;
-      border-radius: 4px;
-    }
-
-    .layout-switcher-body:hover .layout-switcher-option:not(:hover) {
-      opacity: .5;
-      transform: scale(0.9);
-    }
-
-    @media all and (max-width: 990px) {
-      .layout-switcher {
-        min-width: 250px;
-      }
-    }
-
-    @media all and (max-width: 767px) {
-      .layout-switcher {
-        display: none;
-      }
-    }
-  </style>
-  <!-- <div class="layout-switcher" tabindex="1">
-    <div class="layout-switcher-head d-flex justify-content-between">
-      <span>Select Layout</span>
-      <i class="material-icons">arrow_drop_up</i>
-    </div>
-    <div class="layout-switcher-body">
-
-      <div class="layout-switcher-option">
-        <a href="nav-side-project.html">
-          <img alt="Navigation Side" src="static/img/layouts/layout-nav-side.svg" class="layout-switcher-icon" />
-        </a>
-      </div>
-
-      <div class="layout-switcher-option active">
-        <a href="nav-top-project.html">
-          <img alt="Navigation Top" src="static/img/layouts/layout-nav-top.svg" class="layout-switcher-icon" />
-        </a>
-      </div>
-
-      <div class="layout-switcher-option">
-        <a href="nav-top-sidebar-project.html">
-          <img alt="Content Sidebar" src="static/img/layouts/layout-nav-top-sidebar.svg" class="layout-switcher-icon" />
-        </a>
-      </div>
-
-    </div>
-  </div> -->
 
 </body>
 

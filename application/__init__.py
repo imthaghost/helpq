@@ -2,6 +2,7 @@
 import os
 # external python modules
 from flask import Flask, render_template, redirect, jsonify
+from flask_socketio import SocketIO, join_room, emit, send
 from pymongo import MongoClient
 from dotenv import load_dotenv
 
@@ -22,8 +23,6 @@ app = Flask("helpq", template_folder='application/templates',
             static_folder='application/static')
 # application configuration from .env file
 app.config.from_object(os.getenv('APP_SETTINGS'))
-# try to set mongo database
-
 # set default mongodb URI
 os.environ['MONGO_URI'] = 'mongodb://localhost:27017/helpq'
 # set host env
@@ -34,6 +33,8 @@ app.config['MONGO_URI'] = host
 client = MongoClient(host=f'{host}?retryWrites=false')
 # instantiate and get default db name
 db = client.get_default_database()
+# socket
+socketio = SocketIO(app)
 # user collection
 user = db.user
 # register routes
@@ -59,3 +60,13 @@ def page_not_found(e):
 def method_not_allowed(e):
     # set the 405 status explicitly
     return render_template('405.html'), 405
+
+
+@socketio.on('message', namespace='/test')
+def handle_message(msg):
+    send(msg, broadcast=True)
+
+
+@socketio.on('disconnect', namespace='/test')
+def test_disconnect():
+    print('Client disconnected')
